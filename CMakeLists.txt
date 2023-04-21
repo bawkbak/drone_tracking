@@ -120,7 +120,12 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
 )
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
+add_executable(target_estimator src/target_estimator.cpp)
+
+target_link_libraries(target_estimator ${catkin_LIBRARIES})
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/drone_tracking.cpp

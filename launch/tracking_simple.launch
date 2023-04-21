@@ -1,0 +1,12 @@
+<launch>
+    <arg name="node_name" default="simple" />
+    <arg name="robot_tf" default="/fcu" />
+    <arg name="target_tf" default="/tag_center" />
+    <arg name="rate" default="20" />
+
+    <node pkg="drone_tracking" type="target_estimator" name="$(arg node_name)_tracking" clear_params="true" output="screen">
+        <param name="robot_tf" value="$(arg robot_tf)"/>
+        <param name="target_tf" value="$(arg target_tf)"/>
+        <param name="rate" value="$(arg rate)"/>
+    </node>
+</launch>

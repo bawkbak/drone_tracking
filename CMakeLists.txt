@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   tf
+  behavior_tree
 )
 
 ## System dependencies are found with CMake's conventions
@@ -124,8 +125,9 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
 add_executable(target_estimator src/target_estimator.cpp)
-
+add_executable(error_calculation src/error_calculation.cpp)
 target_link_libraries(target_estimator ${catkin_LIBRARIES})
+target_link_libraries(error_calculation ${catkin_LIBRARIES})
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/drone_tracking.cpp

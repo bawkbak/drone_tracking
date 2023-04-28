@@ -1,0 +1,14 @@
+<launch>
+    <!-- <node pkg="drone_tracking" type="target_estimator" name="$(arg node_name)_tracking" clear_params="true" output="screen">
+        <remap from="target/pose" to="tag/goal" />
+        <param name="robot_tf" value="$(arg robot_tf)"/>
+        <param name="target_tf" value="$(arg target_tf)"/>
+        <param name="rate" value="$(arg rate)"/>
+
+        <param name="margin" value="$(arg margin)"/>
+        <param name="offset_x" value="$(arg offset_x)"/>
+        <param name="offset_y" value="$(arg offset_y)"/>
+        <param name="offset_z" value="$(arg offset_z)"/>
+    </node> -->
+
+</launch>

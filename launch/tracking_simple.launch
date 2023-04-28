@@ -1,12 +1,32 @@
 <launch>
     <arg name="node_name" default="simple" />
-    <arg name="robot_tf" default="/fcu" />
+    <arg name="robot_tf" default="/local_origin" />
     <arg name="target_tf" default="/tag_center" />
     <arg name="rate" default="20" />
 
+    <arg name="margin" default="100" />
+    <arg name="offset_x" default="-0.5" />
+    <arg name="offset_y" default="0.0" />
+    <arg name="offset_z" default="0.0" />
+
     <node pkg="drone_tracking" type="target_estimator" name="$(arg node_name)_tracking" clear_params="true" output="screen">
+        <remap from="target/pose" to="tag/goal" />
         <param name="robot_tf" value="$(arg robot_tf)"/>
         <param name="target_tf" value="$(arg target_tf)"/>
         <param name="rate" value="$(arg rate)"/>
+
+        <param name="margin" value="$(arg margin)"/>
+        <param name="offset_x" value="$(arg offset_x)"/>
+        <param name="offset_y" value="$(arg offset_y)"/>
+        <param name="offset_z" value="$(arg offset_z)"/>
+    </node>
+
+    <node pkg="behavior_tree_extra" type="signal_step_buffer" name="pose_in_margin_finished" clear_params="true" output="screen">
+        <remap from="waypoint/state" to="pose_in_margin_success"/>
+        <remap from="state_manager/reset" to="state_manager/reset_pose_in_margin"/>
+    </node>
+
+    <node pkg="behavior_tree_extra" type="buffer_reset" name="pose_in_margin_reset" clear_params="true" output="screen">
+        <remap from="state_manager/reset" to="state_manager/reset_pose_in_margin"/>
     </node>
 </launch>

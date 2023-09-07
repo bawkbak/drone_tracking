@@ -5,7 +5,7 @@
     <arg name="rate" default="20" />
 
     <arg name="margin" default="100" />
-    <arg name="offset_x" default="-0.5" />
+    <arg name="offset_x" default="0.0" />
     <arg name="offset_y" default="0.0" />
     <arg name="offset_z" default="0.0" />
 
